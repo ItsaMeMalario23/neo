@@ -1,0 +1,68 @@
+#   WICHTIG: Reihenfolge der Parameter muss erhalten bleiben
+
+allowNoFirstName (0 / 1):           0
+allowNoLastName (0 / 1):            0
+allowNonAlphaNumericName (0 / 1):   0
+allowNoDepartment (0 / 1):          0
+
+#   Scheint meistens "present" zu sein, gibt auch "unknown"
+#   Wenn mehrere Werte erlaubt sein sollen, dann so:
+#
+#   allowAttendance: present, unknown
+
+allowAttendance: present, unknown
+
+#   Scheint immer 0 zu sein
+
+allowBlockingReason (0 / 1): 0
+
+#   Keine Ahnung
+#   Wahrscheinlich immer NO_DOORS
+#   Kann auch mehrere Werte erlauben
+
+allowOfficeRelease: NO_DOORS
+
+#   Erlaubte Zugangsprofil-IDs (0..255), maximal 34
+
+allowAccessProfiles: 21, 22, 23
+
+serverUrl: "10.0.23.1"
+serverPort: "8080"
+
+#   Importdatei muss mit ".csv" enden, ".CSV" wird zu einem Fehler führen
+#   Leerzeichen im Pfad oder Dateiname sind erlaubt
+#
+#   Relative Pfade so:
+#   importFilePath: "ordner\datei.csv"
+#
+#   Absolute Pfade so:
+#   importFilePath: "C:\order\datei.csv"
+#
+#   WICHTIG:    "\" verwenden, weil Microsoft komisch ist
+#
+#   WICHTIG:    Relative Pfade sind relativ bezogen auf den Pfad,
+#               von dem aus die Executable aufgerufen wird.
+#               NICHT bezogen auf den Pfad, an dem sich die Executable befindet
+#
+#   BEISPIEL:   importFilePath: "import\datei.csv"
+#               Executable in "C:/bin/neo.exe"
+#               Batchskript in "C:/anderer/ordner/run.bat", das "C:/bin/neo.exe" aufruft
+#
+#               Somit wird im Ordner "C:/anderer/ordner/import/" nach "datei.csv" gesucht,
+#               nicht in "C:/bin/import/".
+#
+#   WICHTIG:    Logdateien werden im RELATIVEN Ordner "log/" abgelegt,
+#               es wird eine Logdatei pro Tag erstellt.
+#
+#               Nach einer erfolgreichen Ausführung werden Importdateien in den
+#               RELATIVEN Ordner "log/importfiles/" verschoben und umbenannt.
+#
+#               Nach einer fehlerhaften Ausführung werden Importdatein in den
+#               RELATIVEN Ordner "log/failedimports/" verschoben und umbenannt.
+#
+#               Diese Ordner sollten existieren, sonst undefiniertes Verhalten.
+#
+#               Wenn eine Importdatei nach Ausführung des Programms NICHT verschoben
+#               wurde, wurde das Programm unerwartet abgebrochen.
+
+importFilePath: "import_person.csv"
